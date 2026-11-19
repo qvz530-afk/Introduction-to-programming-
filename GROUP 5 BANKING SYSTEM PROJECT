@@ -1,0 +1,30 @@
+
+loan = float(input("Enter borrowed amount ($): "))
+rate = float(input("Enter penalty rate (%): ")) / 100
+months = int(input("Enter repayment period (months): "))
+
+balance = loan
+month = 1
+
+while balance > 0:
+
+    print(f"\nMonth {month}")
+
+    payment = float(input("Enter repayment ($): "))
+    balance -= payment
+
+    if balance <= 0:
+        balance = 0
+        print("Loan fully repaid!")
+        break
+
+    if month >= months:
+        penalty = balance * rate
+        balance += penalty
+        print(f"Penalty added: ${penalty:.2f}")
+
+    print(f"Remaining balance: ${balance:.2f}")
+
+    month += 1
+
+print(f"\nFinal balance: ${balance:.2f}")
