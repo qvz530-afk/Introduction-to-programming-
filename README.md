@@ -1,30 +1,38 @@
-# Week7 Lesson 4
-loan = float(input("Enter borrowed amount ($): "))
-rate = float(input("Enter penalty rate (%): ")) / 100
-months = int(input("Enter repayment period (months): "))
+START
 
-balance = loan
-month = 1
+    INPUT loan amount
+    INPUT penalty rate
+    CONVERT penalty rate to decimal
+    INPUT repayment period in months
 
-while balance > 0:
+    SET balance = loan amount
+    SET month = 1
 
-    print(f"\nMonth {month}")
+    WHILE balance > 0 DO
 
-    payment = float(input("Enter repayment ($): "))
-    balance -= payment
+        DISPLAY month
 
-    if balance <= 0:
-        balance = 0
-        print("Loan fully repaid!")
-        break
+        INPUT repayment amount
+        SUBTRACT repayment amount from balance
 
-    if month >= months:
-        penalty = balance * rate
-        balance += penalty
-        print(f"Penalty added: ${penalty:.2f}")
+        IF balance <= 0 THEN
+            SET balance = 0
+            DISPLAY "Loan fully repaid!"
+            BREAK
+        END IF
 
-    print(f"Remaining balance: ${balance:.2f}")
+        IF month >= repayment period THEN
+            CALCULATE penalty = balance * penalty rate
+            ADD penalty to balance
+            DISPLAY penalty added
+        END IF
 
-    month += 1
+        DISPLAY remaining balance
 
-print(f"\nFinal balance: ${balance:.2f}")
+        INCREASE month by 1
+
+    END WHILE
+
+    DISPLAY final balance
+
+END
